@@ -34,16 +34,16 @@ public class ProductService {
 
         Product existingProduct = repo.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
 
-        // Set the ID explicitly
+
         product.setId(id);
 
-        // Handle image update
+
         if (imageFile != null && !imageFile.isEmpty()) {
             product.setImageDate(imageFile.getBytes());
             product.setImageName(imageFile.getOriginalFilename());
             product.setImageType(imageFile.getContentType());
         } else {
-            // Keep the existing image
+
             product.setImageDate(existingProduct.getImageDate());
             product.setImageName(existingProduct.getImageName());
             product.setImageType(existingProduct.getImageType());
